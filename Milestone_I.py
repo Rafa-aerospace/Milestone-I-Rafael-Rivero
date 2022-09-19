@@ -129,8 +129,6 @@ for key in Delta_t:     # Initialitation of zeros matrices for each scheme
     
     U_CrankNic[key] = np.zeros((len(U_0), int(TIME/key)+1))
 
-for key in Delta_t:
-    
     U_Euler[key][:,0] = U_0
     
     U_RK4[key][:,0] = U_0
