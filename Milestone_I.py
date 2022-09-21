@@ -113,7 +113,7 @@ U_0 = np.hstack((r_0,v_0)) #U_0 = np.array([r_0[0], r_0[1], v_0[0], v_0[1]])
 
 print('Initial State Vector: U_0 = ', U_0)
 
-TIME = 100
+TIME = 20
 
 Delta_t = [0.2, 0.1, 0.01, 0.001]                # Δt for different simulations
 
@@ -171,10 +171,11 @@ ax.set_xlabel(r'$x$',fontsize=20)
 ax.set_ylabel(r'$y$',fontsize=20)
 for i in range(len(Delta_t)):
     
-    ax.plot( U_Euler[Delta_t[i]][0,:], U_Euler[Delta_t[i]][1,:], c=colours[i])
+    ax.plot( U_Euler[Delta_t[i]][0,:], U_Euler[Delta_t[i]][1,:], c=colours[i], label=r'$\Delta t$ = '+str(Delta_t[i]))
 
 ax.plot(x,y,'k'); ax.plot(x,-y,'k')
 ax.plot(0,0,'k-o', markersize=12)
+ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 plt.show()
 
 
@@ -189,10 +190,11 @@ ax.set_xlabel(r'$x$',fontsize=20)
 ax.set_ylabel(r'$y$',fontsize=20)
 for i in range(len(Delta_t)):
     
-    ax.plot( U_RK4[Delta_t[i]][0,:], U_RK4[Delta_t[i]][1,:], c=colours[i])
+    ax.plot( U_RK4[Delta_t[i]][0,:], U_RK4[Delta_t[i]][1,:], c=colours[i], label=r'$\Delta t$ = '+str(Delta_t[i]))
 
 ax.plot(x,y,'k'); ax.plot(x,-y,'k')
 ax.plot(0,0,'k-o', markersize=12)
+ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 plt.show()
 
 # fig, ax = plt.subplots(1,1, figsize=(11,11), constrained_layout='true')
@@ -224,10 +226,11 @@ ax.set_xlabel(r'$x$',fontsize=20)
 ax.set_ylabel(r'$y$',fontsize=20)
 for i in range(len(Delta_t)):
     
-    ax.plot( U_CrankNic[Delta_t[i]][0,:], U_CrankNic[Delta_t[i]][1,:], c=colours[i])
+    ax.plot( U_CrankNic[Delta_t[i]][0,:], U_CrankNic[Delta_t[i]][1,:], c=colours[i], label=r'$\Delta t$ = '+str(Delta_t[i]))
 
 ax.plot(x,y,'k'); ax.plot(x,-y,'k')
 ax.plot(0,0,'k-o', markersize=12)
+ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 plt.show()
 
 
