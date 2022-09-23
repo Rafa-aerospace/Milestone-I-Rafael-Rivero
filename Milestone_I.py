@@ -234,18 +234,18 @@ ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 plt.show()
 
 
-# %%
-fig, axes = plt.subplots(3,1, figsize=(18,10), constrained_layout='true')
+## %%
+fig, axes = plt.subplots(3,1, figsize=(18,15), constrained_layout='true')
 
 ax = axes[0]
 ax.set_xlim(0,t)
 ax.set_title('Conservation of kinetic energy in different schemes with'+r' $\Delta t =$ '+str(Delta_t[-1]) ,fontsize=20)
 ax.grid()
 ax.set_xlabel(r'$t$',fontsize=20)
-ax.set_ylabel(r'$(\dot{x}^2 + \dot{y}^2)^{\frac{1}{2}}$',fontsize=20)
-ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[-1]][0,:])), np.sqrt(U_CrankNic[Delta_t[-1]][2,:]**2 + U_CrankNic[Delta_t[-1]][3,:]**2) , c='black', label='Crank-Nicolson')
-ax.plot( np.linspace(0,t,len(U_Euler[Delta_t[-1]][0,:])), np.sqrt(U_Euler[Delta_t[-1]][2,:]**2 + U_Euler[Delta_t[-1]][3,:]**2) , c='blue', label='Euler')
-ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[-1]][0,:])), np.sqrt(U_RK4[Delta_t[-1]][2,:]**2 + U_RK4[Delta_t[-1]][3,:]**2) , c='red', label='Runge Kutta 4th')
+ax.set_ylabel(r'$\dot{x}^2 + \dot{y}^2$',fontsize=25)
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[-1]][0,:])), U_CrankNic[Delta_t[-1]][2,:]**2 + U_CrankNic[Delta_t[-1]][3,:]**2 , c='black', label='Crank-Nicolson')
+ax.plot( np.linspace(0,t,len(U_Euler[Delta_t[-1]][0,:])), U_Euler[Delta_t[-1]][2,:]**2 + U_Euler[Delta_t[-1]][3,:]**2 , c='blue', label='Euler')
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[-1]][0,:])), U_RK4[Delta_t[-1]][2,:]**2 + U_RK4[Delta_t[-1]][3,:]**2 , c='red', label='Runge Kutta 4th')
 ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 
 ax = axes[1]
@@ -253,10 +253,10 @@ ax.set_xlim(0,t)
 ax.set_title('Conservation of kinetic energy with Runge Kutta 4th order scheme',fontsize=20)
 ax.grid()
 ax.set_xlabel(r'$t$',fontsize=20)
-ax.set_ylabel(r'$(\dot{x}^2 + \dot{y}^2)^{\frac{1}{2}}$',fontsize=20)
-ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[0]][0,:])), np.sqrt(U_RK4[Delta_t[0]][2,:]**2 + U_RK4[Delta_t[0]][3,:]**2) , c='green', label=r'$\Delta t =$ '+str(Delta_t[0]))
-ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[1]][0,:])), np.sqrt(U_RK4[Delta_t[1]][2,:]**2 + U_RK4[Delta_t[1]][3,:]**2) , c='purple', label=r'$\Delta t =$ '+str(Delta_t[1]))
-ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[-1]][0,:])), np.sqrt(U_RK4[Delta_t[-1]][2,:]**2 + U_RK4[Delta_t[-1]][3,:]**2) , c='magenta', label=r'$\Delta t =$ '+str(Delta_t[-1]))
+ax.set_ylabel(r'$\dot{x}^2 + \dot{y}^2$',fontsize=25)
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[0]][0,:])), U_RK4[Delta_t[0]][2,:]**2 + U_RK4[Delta_t[0]][3,:]**2 , c='green', label=r'$\Delta t =$ '+str(Delta_t[0]))
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[1]][0,:])), U_RK4[Delta_t[1]][2,:]**2 + U_RK4[Delta_t[1]][3,:]**2 , c='purple', label=r'$\Delta t =$ '+str(Delta_t[1]))
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[-1]][0,:])), U_RK4[Delta_t[-1]][2,:]**2 + U_RK4[Delta_t[-1]][3,:]**2 , c='magenta', label=r'$\Delta t =$ '+str(Delta_t[-1]))
 ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 
 ax = axes[2]
@@ -264,10 +264,51 @@ ax.set_xlim(0,t)
 ax.set_title('Conservation of kinetic energy with Crank-Nicolson scheme',fontsize=20)
 ax.grid()
 ax.set_xlabel(r'$t$',fontsize=20)
-ax.set_ylabel(r'$(\dot{x}^2 + \dot{y}^2)^{\frac{1}{2}}$',fontsize=20)
-ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[0]][0,:])), np.sqrt(U_CrankNic[Delta_t[0]][2,:]**2 + U_CrankNic[Delta_t[0]][3,:]**2) , c='green', label=r'$\Delta t =$ '+str(Delta_t[0]))
-ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[1]][0,:])), np.sqrt(U_CrankNic[Delta_t[1]][2,:]**2 + U_CrankNic[Delta_t[1]][3,:]**2) , c='purple', label=r'$\Delta t =$ '+str(Delta_t[1]))
-ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[-1]][0,:])), np.sqrt(U_CrankNic[Delta_t[-1]][2,:]**2 + U_CrankNic[Delta_t[-1]][3,:]**2) , c='magenta', label=r'$\Delta t =$ '+str(Delta_t[-1]))
+ax.set_ylabel(r'$\dot{x}^2 + \dot{y}^2$',fontsize=25)
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[0]][0,:])), U_CrankNic[Delta_t[0]][2,:]**2 + U_CrankNic[Delta_t[0]][3,:]**2 , c='green', label=r'$\Delta t =$ '+str(Delta_t[0]))
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[1]][0,:])), U_CrankNic[Delta_t[1]][2,:]**2 + U_CrankNic[Delta_t[1]][3,:]**2 , c='purple', label=r'$\Delta t =$ '+str(Delta_t[1]))
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[-1]][0,:])), U_CrankNic[Delta_t[-1]][2,:]**2 + U_CrankNic[Delta_t[-1]][3,:]**2 , c='magenta', label=r'$\Delta t =$ '+str(Delta_t[-1]))
+ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
+
+plt.show()
+
+
+
+
+
+fig, axes = plt.subplots(3,1, figsize=(18,15), constrained_layout='true')
+
+ax = axes[0]
+ax.set_xlim(0,t)
+ax.set_title('Conservation of potential energy in different schemes with'+r' $\Delta t =$ '+str(Delta_t[-1]) ,fontsize=25)
+ax.grid()
+ax.set_xlabel(r'$t$',fontsize=20)
+ax.set_ylabel(r'$||r||^{-1}$',fontsize=20)
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[-1]][0,:])), 1/np.sqrt(U_CrankNic[Delta_t[-1]][0,:]**2 + U_CrankNic[Delta_t[-1]][1,:]**2) , c='black', label='Crank-Nicolson')
+ax.plot( np.linspace(0,t,len(U_Euler[Delta_t[-1]][0,:])), 1/np.sqrt(U_Euler[Delta_t[-1]][0,:]**2 + U_Euler[Delta_t[-1]][1,:]**2) , c='blue', label='Euler')
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[-1]][0,:])), 1/np.sqrt(U_RK4[Delta_t[-1]][0,:]**2 + U_RK4[Delta_t[-1]][1,:]**2) , c='red', label='Runge Kutta 4th')
+ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
+
+ax = axes[1]
+ax.set_xlim(0,t)
+ax.set_title('Conservation of potential energy with Runge Kutta 4th order scheme',fontsize=25)
+ax.grid()
+ax.set_xlabel(r'$t$',fontsize=20)
+ax.set_ylabel(r'$||r||^{-1}$',fontsize=20)
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[0]][0,:])), 1/np.sqrt(U_RK4[Delta_t[0]][0,:]**2 + U_RK4[Delta_t[0]][1,:]**2) , c='green', label=r'$\Delta t =$ '+str(Delta_t[0]))
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[1]][0,:])), 1/np.sqrt(U_RK4[Delta_t[1]][0,:]**2 + U_RK4[Delta_t[1]][1,:]**2) , c='purple', label=r'$\Delta t =$ '+str(Delta_t[1]))
+ax.plot( np.linspace(0,t,len(U_RK4[Delta_t[-1]][0,:])), 1/np.sqrt(U_RK4[Delta_t[-1]][0,:]**2 + U_RK4[Delta_t[-1]][1,:]**2) , c='magenta', label=r'$\Delta t =$ '+str(Delta_t[-1]))
+ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
+
+ax = axes[2]
+ax.set_xlim(0,t)
+ax.set_title('Conservation of potential energy with Crank-Nicolson scheme',fontsize=25)
+ax.grid()
+ax.set_xlabel(r'$t$',fontsize=20)
+ax.set_ylabel(r'$||r||^{-1}$',fontsize=20)
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[0]][0,:])), 1/np.sqrt(U_CrankNic[Delta_t[0]][0,:]**2 + U_CrankNic[Delta_t[0]][1,:]**2) , c='green', label=r'$\Delta t =$ '+str(Delta_t[0]))
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[1]][0,:])), 1/np.sqrt(U_CrankNic[Delta_t[1]][0,:]**2 + U_CrankNic[Delta_t[1]][1,:]**2) , c='purple', label=r'$\Delta t =$ '+str(Delta_t[1]))
+ax.plot( np.linspace(0,t,len(U_CrankNic[Delta_t[-1]][0,:])), 1/np.sqrt(U_CrankNic[Delta_t[-1]][0,:]**2 + U_CrankNic[Delta_t[-1]][1,:]**2) , c='magenta', label=r'$\Delta t =$ '+str(Delta_t[-1]))
 ax.legend(loc=0, fancybox=False, edgecolor="black", ncol = 1, fontsize=16)
 
 plt.show()
